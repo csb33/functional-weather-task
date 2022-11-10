@@ -1,16 +1,13 @@
 const Clouds = (props) => {
-  const description = props.weathers.list[0].weather[0].description;
-  console.log(description, "DESCRIPTION");
-
-  const image = props.weathers.list[0].weather[0].icon;
-  console.log(image, "ICON");
+  const { description, icon } = props.weather;
+  console.log(props.weather, "DESCRIPTION");
 
   return (
     <>
       <div>
         <p>{description}</p>
         <img
-          src={`"http://openweathermap.org/img/w/${props.weathers.list[0].weather[0].icon}.png"`}
+          src={`http://openweathermap.org/img/w/${icon}.png`}
           alt={description}
         />
       </div>

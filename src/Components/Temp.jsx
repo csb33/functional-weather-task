@@ -1,5 +1,5 @@
 const Temp = (props) => {
-  const temp = props.weathers.list[0].main.temp;
+  const { temp } = props.main;
 
   console.log(temp, "TEMP");
 

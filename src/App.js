@@ -11,9 +11,9 @@ const App = () => {
   ////FETCHING API
   const getApiData = async () => {
     ////Template Literal
-    //// {` sometext ${} sometext `}
+
     const result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=2.5&lon=5.9&appid=e6d679f1c4e26029b176b0ebfc933bd8`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${2.52}&lon=${5.94}&appid=e6d679f1c4e26029b176b0ebfc933bd8`
     );
 
     ////sets state
