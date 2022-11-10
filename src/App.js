@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import WeatherData from "./Components/WeatherData";
+import { useDispatch, useSelector } from "react-redux";
 
 const App = () => {
-  //// HOOK
+  //// HOOK (func)
   //// Must be at top of function as needs to run before any other code.
-  const [weathers, setWeather] = useState();
+  // const [weathers, setWeather] = useState();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   ////FETCHING API
   const getApiData = async () => {
@@ -17,7 +20,9 @@ const App = () => {
     );
 
     ////sets state
-    setWeather(result.data);
+    // setWeather(result.data);
+
+    dispatch({ type: "STORE_API_DATA", weathers: result.data });
   };
 
   ////COMPONENT MOUNTING/UPDATING
@@ -26,7 +31,7 @@ const App = () => {
     getApiData();
   }, []);
 
-  return <>{weathers ? <WeatherData weathers={weathers} /> : "Loading..."}</>;
+  return <>{state ? <WeatherData /> : "Loading..."}</>;
 };
 
 export default App;

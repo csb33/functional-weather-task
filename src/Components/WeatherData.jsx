@@ -1,10 +1,13 @@
 import Clouds from "./Clouds";
 import Temp from "./Temp";
 import Daytime from "./Daytime";
+import { useSelector } from "react-redux";
 
 ////Using state from parent so PROPS must be used.
-const WeatherData = (props) => {
-  const { list } = props.weathers;
+
+const WeatherData = () => {
+  const state = useSelector((state) => state);
+  const { list } = state.weathers;
 
   return (
     //// Prop drilling
@@ -13,11 +16,11 @@ const WeatherData = (props) => {
         ////FIZZBUZZ
         if (index % 8 === 0) {
           return (
-            <>
+            <div key={weather.dt}>
               <Temp main={weather.main} />
               <Clouds weather={weather.weather[0]} />
               <Daytime dt={weather.dt} />
-            </>
+            </div>
           );
         }
       })}
